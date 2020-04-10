@@ -38,11 +38,23 @@ else
   exit
 fi
 
+NOW_MYSQL_VERSION=""
+# shellcheck disable=SC2006
+NOW_MYSQL_VERSION=`docker images mysql`
+
+echo "当前的mysql版本为：$NOW_MYSQL_VERSION"
+
 ## 开始拉取
 echo "开始拉取 mysql $MYSQL_VERSION"
-
+PULL_MYSQL_COMMAND="docker pull mysql:$MYSQL_VERSION"
+echo "执行：$PULL_MYSQL_COMMAND"
 # shellcheck disable=SC2006
-PULL_MYSQL_RESULT=`docker pull mysql:"$MYSQL_VERSION"`
+docker pull mysql:"$MYSQL_VERSION"
+
+echo "拉取结果：$PULL_MYSQL_RESULT"
+
+
+
 
 
 
